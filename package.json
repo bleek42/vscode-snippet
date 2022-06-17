@@ -1,0 +1,166 @@
+{
+  "name": "snippet",
+  "displayName": "Snippet",
+  "description": "Insert a snippet from cht.sh for Python, JavaScript, Ruby, C#, Go, Rust (and any other language)",
+  "version": "0.8.1",
+  "publisher": "vscode-snippet",
+  "engines": {
+    "vscode": "^1.40.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mre/vscode-snippet.git"
+  },
+  "license": "MIT",
+  "icon": "contrib/icon.png",
+  "galleryBanner": {
+    "color": "#6cfff9",
+    "theme": "light"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Other"
+  ],
+  "tags": [
+    "python",
+    "ruby",
+    "php",
+    "rust",
+    "C#",
+    "go",
+    "haskell",
+    "typescript",
+    "shell",
+    "javascript",
+    "node",
+    "snippet",
+    "examples",
+    "documentation",
+    "help",
+    "tldr",
+    "helper",
+    "cheatsheet"
+  ],
+  "main": "./out/extension",
+  "contributes": {
+    "commands": [
+      {
+        "title": "Find",
+        "command": "snippet.find",
+        "category": "Snippet"
+      },
+      {
+        "title": "Find for language",
+        "command": "snippet.findForLanguage",
+        "category": "Snippet"
+      },
+      {
+        "title": "Find Inplace",
+        "command": "snippet.findInplace",
+        "category": "Snippet"
+      },
+      {
+        "title": "Find in new editor window",
+        "command": "snippet.findInNewEditor",
+        "category": "Snippet"
+      },
+      {
+        "title": "Find snippet from selected text",
+        "command": "snippet.findSelectedText",
+        "category": "Snippet"
+      },
+      {
+        "title": "Show previous answer",
+        "command": "snippet.showPreviousAnswer",
+        "category": "Snippet"
+      },
+      {
+        "title": "Show next answer",
+        "command": "snippet.showNextAnswer",
+        "category": "Snippet"
+      },
+      {
+        "title": "Toggle comments",
+        "command": "snippet.toggleComments",
+        "category": "Snippet"
+      }
+    ],
+    "configuration": {
+      "title": "Snippet",
+      "properties": {
+        "snippet.baseUrl": {
+          "type": "string",
+          "default": "https://cht.sh",
+          "description": "Base URL of the cheat sheet server"
+        },
+        "snippet.openInNewEditor": {
+          "type": "boolean",
+          "default": true,
+          "description": "Open snippet result in new editor."
+        },
+        "snippet.verbose": {
+          "type": "boolean",
+          "default": false,
+          "description": "Also show explanations for code snippets."
+        },
+        "snippet.defaultLanguage": {
+          "type": "string",
+          "default": null,
+          "description": "Programming language name in lower case to use as default language when there is no open editor window."
+        }
+      }
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorHasSelection",
+          "command": "snippet.findSelectedText",
+          "group": "1_modification"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "snippet.findSelectedText",
+        "key": "ctrl+shift+s",
+        "mac": "cmd+shift+s",
+        "when": "editorHasSelection"
+      }
+    ]
+  },
+  "activationEvents": [
+    "onCommand:snippet.find",
+    "onCommand:snippet.findForLanguage",
+    "onCommand:snippet.findSelectedText",
+    "onCommand:snippet.findInplace",
+    "onCommand:snippet.findInNewEditor",
+    "onCommand:snippet.showPreviousAnswer",
+    "onCommand:snippet.showNextAnswer",
+    "onCommand:snippet.toggleComments"
+  ],
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./ --allowSyntheticDefaultImports",
+    "watch": "tsc -watch -p ./",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test"
+  },
+  "dependencies": {
+    "axios": "0.27.2",
+    "event-stream": "4.0.1",
+    "http-proxy-agent": "5.0.0",
+    "ts-node": "^10.8.1",
+    "vsce": "^2.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "18.0.0",
+    "@types/vscode": "1.68.0",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
+    "eslint": "^8.17.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "prettier": "2.7.1",
+    "typescript": "4.7.3"
+  }
+}
