@@ -149,7 +149,7 @@
     "axios": "0.27.2",
     "event-stream": "4.0.1",
     "http-proxy-agent": "5.0.0",
-    "ts-node": "^10.8.1",
+    "ts-node": "^10.8.2",
     "vsce": "^2.9.1"
   },
   "devDependencies": {
